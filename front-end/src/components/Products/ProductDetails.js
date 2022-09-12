@@ -83,9 +83,13 @@ export default function ProductDetails({getData }) {
       </Row >
         <Modal.Body className='text-center'>
             <Card.Img src={product.image} variant="top" style={{width:'50%'}}/>
+
+            <h2 style={labelStyle}> Product details : </h2>
         <p>
             {product.description}
         </p>
+
+        <h1 style={labelStyle}>comments</h1>
       </Modal.Body>
       <Modal.Footer>
       </Modal.Footer>
@@ -93,4 +97,12 @@ export default function ProductDetails({getData }) {
       <EditProduct showAddModal={showAddModal} setShowAddModal={setShowAddModal} getData={getData} id={id}/>
     </Container>
   )
+}
+
+const labelStyle={
+  backgroundColor:'gray',
+  padding:'1%',
+  borderRadius:'30px',
+  textAlign:'center',
+  margin:'2%'
 }

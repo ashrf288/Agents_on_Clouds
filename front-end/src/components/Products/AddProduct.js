@@ -16,7 +16,7 @@ export default function AddProduct({ showAddModal, setShowAddModal,getData }) {
       price: parseInt(e.target.price.value),
       description: e.target.description.value,
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbTX0mvWV40iwuM5P_deNJfg16J-MmUTMQCyVl2KEIkQ&s",
+        "https://media.istockphoto.com/vectors/the-banner-with-new-product-is-depicted-on-a-white-background-vector-id1178279813?k=20&m=1178279813&s=612x612&w=0&h=OGAYE2PD0Mhoog2kVYxGvuccbPh5gKMwgiLwmI_3LhM=",
     };
     axios
       .post(process.env.REACT_APP_API_URL + "/product", product, {

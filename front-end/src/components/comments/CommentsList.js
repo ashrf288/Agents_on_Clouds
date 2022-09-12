@@ -56,7 +56,7 @@ export default function CommentsList({product}) {
         </Form>
       </Row>
       <Row >
-      <h1 style={{textAlign:'center'}}>comments</h1>
+
       </Row>
       {comments&&comments.map((comment,idx)=>{
         return (<Row key={idx} >

@@ -29,7 +29,7 @@ export default function Products() {
   }, [authContext.user.token,products,getData]);
   return (
     <Container >
-      <Button onClick={()=>setShowAddModal(true)} style={{margin:'2% 50%',cursor:'pointer'}}> add product </Button>
+      <Button onClick={()=>setShowAddModal(true)} style={buttonStyle}> Add NEW Product </Button>
       {showAddModal&&<AddProduct showAddModal={showAddModal} setShowAddModal={setShowAddModal} getData={getData} />}
       <Row style={{marginBlock:'5%'}}>
 
@@ -40,4 +40,13 @@ export default function Products() {
       </Row>
     </Container>
   );
+}
+
+const buttonStyle={
+  position:'relative',
+  left:'30%',
+  marginBlock:'2%',
+  cursor:'pointer',
+  width:'40%',
+  fontSize:'1.5rem',
 }

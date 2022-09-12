@@ -50,6 +50,8 @@ export default function CommentsList({product}) {
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name='comment'
+          type='text'
+          required
         />
         <Button type='submit' id="basic-addon2">add comment</Button>
       </InputGroup>

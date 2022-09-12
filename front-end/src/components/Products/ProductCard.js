@@ -22,7 +22,7 @@ export default function ProductCard({product,getData}) {
       <Row > <Card.Text style={{marginBlock:'2%'}}> 
         <span style={{fontSize:"30px"}}>Price : {product.price}</span> 
       </Card.Text></Row>
-<Button variant="primary">add to cart</Button>
+{/* <Button variant="primary">add to cart</Button> */}
 
       
     </Card.Body>

@@ -11,7 +11,7 @@ export default function ProductCard({product,getData}) {
 
   return (
     <>
-    <Card style={{width:'18rem' ,cursor:'pointer'}}>
+    <Card style={{idth:'18rem' ,cursor:'pointer'}}>
       <Link to={`/${product._id}`} state={{ data: product }} style={LinkStyle}  > 
     <Card.Img variant="top" src={product.image} />
     <Card.Body style={cardStyle} >
@@ -19,7 +19,7 @@ export default function ProductCard({product,getData}) {
       <Card.Text style={{textOverflow:'ellipsis' , whiteSpace:'nowrap', maxWidth:'10px'}}>
         {product.description}
       </Card.Text>
-      <Row > <Card.Text style={{}}> 
+      <Row > <Card.Text style={{marginBlock:'2%'}}> 
         <span style={{fontSize:"30px"}}>Price : {product.price}</span> 
       </Card.Text></Row>
 <Button variant="primary">add to cart</Button>

@@ -10,11 +10,13 @@ import CommentsList from '../comments/CommentsList';
 import axios from 'axios';
 import EditProduct from './EditProduct';
 import { useParams } from 'react-router-dom';
-
 import { useCookies } from 'react-cookie';
+import FavAlert from './FavAlert';
+
 export default function ProductDetails({getData }) {
   const token=useCookies(['user'])[0].user.token
   const [product, setProduct] = React.useState({});
+  const [showAlert,SetshowAlert]=React.useState(false)
   const [owner,setOwner]=React.useState()
   const [showAddModal, setShowAddModal] = React.useState(false);
   const productsContext=useContext(ProductsContext)
@@ -44,8 +46,7 @@ export default function ProductDetails({getData }) {
       await axios.post(process.env.REACT_APP_API_URL+'/favorites',{productId:product._id}, {headers:{
         Authorization: `Bearer ${authContext.user.token}`,
       },}).then(response=>{
-         getData()
-
+         SetshowAlert(true)
       }
         ).catch(err=>console.log(err))
    
@@ -54,6 +55,7 @@ export default function ProductDetails({getData }) {
 
     const editHandler=()=>{
         setShowAddModal(true)
+        
     }
     useEffect(()=>{
       product&&getProduct()
@@ -81,6 +83,7 @@ export default function ProductDetails({getData }) {
       
       </Col>
       </Row >
+      {showAlert&&<FavAlert SetshowAlert={SetshowAlert} />}
         <Modal.Body className='text-center'>
             <Card.Img src={product.image} variant="top" style={{width:'50%'}}/>
 

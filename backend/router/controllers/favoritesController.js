@@ -11,6 +11,7 @@ const addFavorite = async (req, res) => {
             userId,
             productId
         });
+        
         const saveFavorite = await newFavorite.save();
         res.status(201).json(saveFavorite);
     } catch (error) {

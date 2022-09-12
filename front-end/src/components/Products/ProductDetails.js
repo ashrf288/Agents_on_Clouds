@@ -84,7 +84,7 @@ export default function ProductDetails({getData }) {
         <Modal.Body className='text-center'>
             <Card.Img src={product.image} variant="top" style={{width:'50%'}}/>
 
-            <h2 style={labelStyle}> Product details : </h2>
+            <h2 style={labelStyle}> Product details </h2>
         <p>
             {product.description}
         </p>

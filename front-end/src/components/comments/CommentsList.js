@@ -4,22 +4,22 @@ import { Row,InputGroup,Form, Button } from 'react-bootstrap'
 import Comment from './Comment'
 import { AuthContext } from "../../context/user";
 
-import { ProductsContext } from "../../context/product";
 
 export default function CommentsList({product}) {
   const [comments,setComments]=React.useState([]);
   const authContext = useContext(AuthContext);
-  const productsContext=useContext(ProductsContext)
 
 
   const getComments=()=>{
-    axios.get(process.env.REACT_APP_API_URL+'/comment/'+product._id, {headers:{
+    (authContext.user.token &&product._id)&&axios.get(process.env.REACT_APP_API_URL+'/comment/'+product._id, {headers:{
       Authorization: `Bearer ${authContext.user.token}`,
     },}).then(response=>{
       
       setComments(response.data)
     }
-      ).catch(err=>console.log(err))
+      ).catch(err=>
+        console.log(err)
+        )
   }
 
 
@@ -60,7 +60,7 @@ export default function CommentsList({product}) {
       </Row>
       {comments&&comments.map((comment,idx)=>{
         return (<Row key={idx} >
-          <Comment  comment={comment} />
+          <Comment  comment={comment} product={product} />
         </Row>)
       
       })

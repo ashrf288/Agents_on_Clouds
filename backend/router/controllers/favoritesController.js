@@ -4,6 +4,8 @@ const { authorization } = require("../middleware/authorization");
 
 
 const addFavorite = async (req, res) => {
+
+    // will check if the product is already in the favorites then it will update it only else it will add it
     try {
         const userId = req.token.userId;
         const productId = req.body.productId;
@@ -11,9 +13,21 @@ const addFavorite = async (req, res) => {
             userId,
             productId
         });
-        
-        const saveFavorite = await newFavorite.save();
-        res.status(201).json(saveFavorite);
+        const favorite = await FavoritesModel.findOne({ userId: userId, productId: productId });
+        if (favorite) {
+            FavoritesModel.updateOne({ userId: userId, productId: productId }, { $set: { userId: userId, productId: productId } }, (err, result) => {
+                if (err) {
+                    res.status(500).send(err);
+                } else {
+                    res.status(200).send(result);
+                }
+            }
+            )
+        } else {
+            newFavorite.save();
+            res.status(200).json(newFavorite);
+
+        }
     } catch (error) {
         res.status(400).json(error);
     }
